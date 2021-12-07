@@ -19,6 +19,7 @@ namespace Crud_With_C
 
         private void btn_back_Click(object sender, EventArgs e)
         {
+            Hide();
             frm_login frm2 = new frm_login();
             frm2.Show();
         }

@@ -24,13 +24,17 @@ namespace Crud_With_C
 
         private void btn_signin_Click(object sender, EventArgs e)
         {
+            MessageBox.Show("Username or password invalid!");
+            Hide();
             frm_inventory_control_list frm4 = new frm_inventory_control_list();
             frm4.Show();
         }
 
         private void btn_register_Click(object sender, EventArgs e)
         {
-
+            Hide();
+            frm_register frm4 = new frm_register();
+            frm4.Show();
         }
     }
 }

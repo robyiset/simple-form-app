@@ -46,7 +46,7 @@ namespace Crud_With_C
             // 
             // btn_back
             // 
-            this.btn_back.BackColor = System.Drawing.Color.IndianRed;
+            this.btn_back.BackColor = System.Drawing.Color.Teal;
             this.btn_back.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
             this.btn_back.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.btn_back.Location = new System.Drawing.Point(289, 367);

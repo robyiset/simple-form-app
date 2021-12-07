@@ -83,6 +83,7 @@ namespace Crud_With_C
 
         private void btn_back_Click(object sender, EventArgs e)
         {
+            Hide();
             frm_inventory_control_list frm4 = new frm_inventory_control_list();
             frm4.Show();
         }

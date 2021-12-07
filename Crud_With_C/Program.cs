@@ -16,7 +16,7 @@ namespace Crud_With_C
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frm_inventory_control_1());
+            Application.Run(new frm_login());
         }
     }
 }
