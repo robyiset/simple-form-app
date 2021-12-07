@@ -35,13 +35,14 @@ namespace Crud_With_C
             this.txt_username = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.ttx_re_password = new System.Windows.Forms.TextBox();
+            this.txt_re_password = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.txt_email = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.cb_gender = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.btn_register = new System.Windows.Forms.Button();
+            this.lb_registering = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btn_back
@@ -61,6 +62,7 @@ namespace Crud_With_C
             // 
             this.txt_password.Location = new System.Drawing.Point(289, 205);
             this.txt_password.Name = "txt_password";
+            this.txt_password.PasswordChar = '*';
             this.txt_password.Size = new System.Drawing.Size(241, 20);
             this.txt_password.TabIndex = 26;
             // 
@@ -104,12 +106,13 @@ namespace Crud_With_C
             this.label1.TabIndex = 22;
             this.label1.Text = "Inventory Control Register";
             // 
-            // ttx_re_password
+            // txt_re_password
             // 
-            this.ttx_re_password.Location = new System.Drawing.Point(289, 248);
-            this.ttx_re_password.Name = "ttx_re_password";
-            this.ttx_re_password.Size = new System.Drawing.Size(241, 20);
-            this.ttx_re_password.TabIndex = 31;
+            this.txt_re_password.Location = new System.Drawing.Point(289, 248);
+            this.txt_re_password.Name = "txt_re_password";
+            this.txt_re_password.PasswordChar = '*';
+            this.txt_re_password.Size = new System.Drawing.Size(241, 20);
+            this.txt_re_password.TabIndex = 31;
             // 
             // label4
             // 
@@ -175,18 +178,29 @@ namespace Crud_With_C
             this.btn_register.UseVisualStyleBackColor = false;
             this.btn_register.Click += new System.EventHandler(this.btn_register_Click);
             // 
+            // lb_registering
+            // 
+            this.lb_registering.AutoSize = true;
+            this.lb_registering.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.lb_registering.ForeColor = System.Drawing.Color.White;
+            this.lb_registering.Location = new System.Drawing.Point(365, 425);
+            this.lb_registering.Name = "lb_registering";
+            this.lb_registering.Size = new System.Drawing.Size(0, 20);
+            this.lb_registering.TabIndex = 37;
+            // 
             // frm_register
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.MediumAquamarine;
             this.ClientSize = new System.Drawing.Size(775, 534);
+            this.Controls.Add(this.lb_registering);
             this.Controls.Add(this.btn_register);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.cb_gender);
             this.Controls.Add(this.txt_email);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.ttx_re_password);
+            this.Controls.Add(this.txt_re_password);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.btn_back);
             this.Controls.Add(this.txt_password);
@@ -209,12 +223,13 @@ namespace Crud_With_C
         private System.Windows.Forms.TextBox txt_username;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox ttx_re_password;
+        private System.Windows.Forms.TextBox txt_re_password;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txt_email;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox cb_gender;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button btn_register;
+        private System.Windows.Forms.Label lb_registering;
     }
 }
