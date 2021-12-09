@@ -23,8 +23,8 @@ namespace Crud_With_C
         private void btn_register_Click(object sender, EventArgs e)
         {
             lb_registering.Text = "Registering...";
-            if (!string.IsNullOrEmpty(txt_username.Text) || !string.IsNullOrEmpty(txt_password.Text) || !string.IsNullOrEmpty(txt_re_password.Text) || 
-                !string.IsNullOrEmpty(txt_email.Text) || !string.IsNullOrEmpty(cb_gender.Text))
+            if (!string.IsNullOrEmpty(txt_username.Text) && !string.IsNullOrEmpty(txt_password.Text) && !string.IsNullOrEmpty(txt_re_password.Text) &&
+                !string.IsNullOrEmpty(txt_email.Text) && !string.IsNullOrEmpty(cb_gender.Text))
             {
                 if (txt_password.ToString() == txt_re_password.ToString())
                 {

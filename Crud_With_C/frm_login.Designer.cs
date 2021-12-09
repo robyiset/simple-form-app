@@ -36,14 +36,17 @@ namespace Crud_With_C
             this.label1 = new System.Windows.Forms.Label();
             this.btn_signin = new System.Windows.Forms.Button();
             this.btn_register = new System.Windows.Forms.Button();
+            this.lb_validate = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // txt_password
             // 
             this.txt_password.Location = new System.Drawing.Point(297, 250);
             this.txt_password.Name = "txt_password";
+            this.txt_password.PasswordChar = '*';
             this.txt_password.Size = new System.Drawing.Size(241, 20);
             this.txt_password.TabIndex = 17;
+            this.txt_password.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_password_KeyDown);
             // 
             // label3
             // 
@@ -62,6 +65,7 @@ namespace Crud_With_C
             this.txt_username.Name = "txt_username";
             this.txt_username.Size = new System.Drawing.Size(241, 20);
             this.txt_username.TabIndex = 15;
+            this.txt_username.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_username_KeyDown);
             // 
             // label2
             // 
@@ -111,12 +115,23 @@ namespace Crud_With_C
             this.btn_register.UseVisualStyleBackColor = false;
             this.btn_register.Click += new System.EventHandler(this.btn_register_Click);
             // 
+            // lb_validate
+            // 
+            this.lb_validate.AutoSize = true;
+            this.lb_validate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.lb_validate.ForeColor = System.Drawing.Color.White;
+            this.lb_validate.Location = new System.Drawing.Point(356, 353);
+            this.lb_validate.Name = "lb_validate";
+            this.lb_validate.Size = new System.Drawing.Size(0, 20);
+            this.lb_validate.TabIndex = 22;
+            // 
             // frm_login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.MediumAquamarine;
             this.ClientSize = new System.Drawing.Size(775, 534);
+            this.Controls.Add(this.lb_validate);
             this.Controls.Add(this.btn_register);
             this.Controls.Add(this.btn_signin);
             this.Controls.Add(this.txt_password);
@@ -140,5 +155,6 @@ namespace Crud_With_C
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btn_signin;
         private System.Windows.Forms.Button btn_register;
+        private System.Windows.Forms.Label lb_validate;
     }
 }

@@ -5,6 +5,15 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="db_gudangModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tbl_inventory">
+          <Key>
+            <PropertyRef Name="id_barang" />
+          </Key>
+          <Property Name="id_barang" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="nama_barang" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="jumlah" Type="int" Nullable="false" />
+          <Property Name="create_date" Type="datetime" Nullable="false" />
+        </EntityType>
         <EntityType Name="tbl_user">
           <Key>
             <PropertyRef Name="username" />
@@ -15,6 +24,7 @@
           <Property Name="gender" Type="varchar" MaxLength="6" Nullable="false" />
         </EntityType>
         <EntityContainer Name="db_gudangModelStoreContainer">
+          <EntitySet Name="tbl_inventory" EntityType="Self.tbl_inventory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_user" EntityType="Self.tbl_user" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -32,7 +42,17 @@
         </EntityType>
         <EntityContainer Name="db_gudangEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="tbl_user" EntityType="Self.tbl_user" />
+          <EntitySet Name="tbl_inventory" EntityType="db_gudangModel.tbl_inventory" />
         </EntityContainer>
+        <EntityType Name="tbl_inventory">
+          <Key>
+            <PropertyRef Name="id_barang" />
+          </Key>
+          <Property Name="id_barang" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="nama_barang" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="jumlah" Type="Int32" Nullable="false" />
+          <Property Name="create_date" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -46,6 +66,16 @@
                 <ScalarProperty Name="password" ColumnName="password" />
                 <ScalarProperty Name="email" ColumnName="email" />
                 <ScalarProperty Name="gender" ColumnName="gender" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_inventory">
+            <EntityTypeMapping TypeName="db_gudangModel.tbl_inventory">
+              <MappingFragment StoreEntitySet="tbl_inventory">
+                <ScalarProperty Name="create_date" ColumnName="create_date" />
+                <ScalarProperty Name="jumlah" ColumnName="jumlah" />
+                <ScalarProperty Name="nama_barang" ColumnName="nama_barang" />
+                <ScalarProperty Name="id_barang" ColumnName="id_barang" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

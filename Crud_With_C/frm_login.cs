@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
+﻿using Crud_With_C.Services;
+using System;
 using System.Net.Http;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Crud_With_C
@@ -25,10 +19,7 @@ namespace Crud_With_C
 
         private void btn_signin_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Username or password invalid!");
-            Hide();
-            frm_inventory_control_list frm4 = new frm_inventory_control_list();
-            frm4.Show();
+            validating();
         }
 
         private void btn_register_Click(object sender, EventArgs e)
@@ -36,6 +27,56 @@ namespace Crud_With_C
             Hide();
             frm_register frm4 = new frm_register();
             frm4.Show();
+        }
+
+        private void txt_username_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                validating();
+            }
+        }
+
+        private void validating()
+        {
+            lb_validate.Text = "Validating...";
+            if (!string.IsNullOrEmpty(txt_username.Text) && !string.IsNullOrEmpty(txt_password.Text))
+            {
+                ConnectionAPI api = new ConnectionAPI();
+                try
+                {
+                    if (api.GetContent("user?username=" + txt_username.Text + "&password=" + txt_password.Text).ReadAsAsync<bool>().Result == true)
+                    {
+                        lb_validate.Text = string.Empty;
+                        Hide();
+                        frm_inventory_control_list frm = new frm_inventory_control_list();
+                        frm.Show();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Username or password invalid!");
+                        lb_validate.Text = string.Empty;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error message: " + ex.Message);
+                    lb_validate.Text = string.Empty;
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please input your username and password!");
+                lb_validate.Text = string.Empty;
+            }
+        }
+
+        private void txt_password_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                validating();
+            }
         }
     }
 }

@@ -6,6 +6,7 @@
     <edmx:Diagrams>
       <Diagram DiagramId="10d72cf1c22f482f932eaeefc4aa7e1e" Name="Diagram1">
         <EntityTypeShape EntityType="db_gudangModel.tbl_user" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="db_gudangModel.tbl_inventory" Width="1.5" PointX="3.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

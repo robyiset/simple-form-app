@@ -26,5 +26,6 @@ namespace Inventory_API.Models
         }
     
         public virtual DbSet<tbl_user> tbl_user { get; set; }
+        public virtual DbSet<tbl_inventory> tbl_inventory { get; set; }
     }
 }
