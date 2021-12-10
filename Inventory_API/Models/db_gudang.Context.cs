@@ -25,7 +25,9 @@ namespace Inventory_API.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<tbl_user> tbl_user { get; set; }
+        public virtual DbSet<tbl_gudang> tbl_gudang { get; set; }
         public virtual DbSet<tbl_inventory> tbl_inventory { get; set; }
+        public virtual DbSet<tbl_user> tbl_user { get; set; }
+        public virtual DbSet<vw_index_gudang> vw_index_gudang { get; set; }
     }
 }

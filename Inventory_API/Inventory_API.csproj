@@ -121,8 +121,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\gudangController.cs" />
     <Compile Include="Controllers\inventoryController.cs" />
-    <Compile Include="Controllers\tbl_userController.cs" />
     <Compile Include="Controllers\userController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -142,10 +142,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>db_gudang.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\tbl_gudang.cs">
+      <DependentUpon>db_gudang.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\tbl_inventory.cs">
       <DependentUpon>db_gudang.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tbl_user.cs">
+      <DependentUpon>db_gudang.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\vw_index_gudang.cs">
       <DependentUpon>db_gudang.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />

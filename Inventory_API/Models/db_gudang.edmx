@@ -5,14 +5,26 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="db_gudangModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tbl_gudang">
+          <Key>
+            <PropertyRef Name="id_gudang" />
+          </Key>
+          <Property Name="id_gudang" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nama_gudang" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="alamat" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="create_date" Type="datetime" Nullable="false" />
+          <Property Name="create_user" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
         <EntityType Name="tbl_inventory">
           <Key>
             <PropertyRef Name="id_barang" />
           </Key>
-          <Property Name="id_barang" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="id_barang" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_gudang" Type="int" Nullable="false" />
           <Property Name="nama_barang" Type="varchar" MaxLength="255" Nullable="false" />
           <Property Name="jumlah" Type="int" Nullable="false" />
           <Property Name="create_date" Type="datetime" Nullable="false" />
+          <Property Name="create_user" Type="varchar" MaxLength="255" Nullable="false" />
         </EntityType>
         <EntityType Name="tbl_user">
           <Key>
@@ -23,35 +35,87 @@
           <Property Name="email" Type="varchar" MaxLength="255" Nullable="false" />
           <Property Name="gender" Type="varchar" MaxLength="6" Nullable="false" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'db_gudang.dbo.vw_index_gudang' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vw_index_gudang">
+          <Key>
+            <PropertyRef Name="id_gudang" />
+            <PropertyRef Name="nama_gudang" />
+            <PropertyRef Name="alamat" />
+            <PropertyRef Name="create_date" />
+          </Key>
+          <Property Name="id_gudang" Type="int" Nullable="false" />
+          <Property Name="nama_gudang" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="alamat" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="create_date" Type="datetime" Nullable="false" />
+          <Property Name="total_barang" Type="int" />
+        </EntityType>
         <EntityContainer Name="db_gudangModelStoreContainer">
+          <EntitySet Name="tbl_gudang" EntityType="Self.tbl_gudang" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_inventory" EntityType="Self.tbl_inventory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_user" EntityType="Self.tbl_user" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="vw_index_gudang" EntityType="Self.vw_index_gudang" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vw_index_gudang].[id_gudang] AS [id_gudang], 
+    [vw_index_gudang].[nama_gudang] AS [nama_gudang], 
+    [vw_index_gudang].[alamat] AS [alamat], 
+    [vw_index_gudang].[create_date] AS [create_date], 
+    [vw_index_gudang].[total_barang] AS [total_barang]
+    FROM [dbo].[vw_index_gudang] AS [vw_index_gudang]</DefiningQuery>
+          </EntitySet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="db_gudangModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="tbl_user">
-          <Key>
-            <PropertyRef Name="username" />
-          </Key>
-          <Property Name="username" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="password" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="gender" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
-        </EntityType>
         <EntityContainer Name="db_gudangEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="tbl_user" EntityType="Self.tbl_user" />
+          <EntitySet Name="tbl_gudang" EntityType="db_gudangModel.tbl_gudang" />
           <EntitySet Name="tbl_inventory" EntityType="db_gudangModel.tbl_inventory" />
+          <EntitySet Name="tbl_user" EntityType="db_gudangModel.tbl_user" />
+          <EntitySet Name="vw_index_gudang" EntityType="db_gudangModel.vw_index_gudang" />
         </EntityContainer>
+        <EntityType Name="tbl_gudang">
+          <Key>
+            <PropertyRef Name="id_gudang" />
+          </Key>
+          <Property Name="id_gudang" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nama_gudang" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="alamat" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="create_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="create_user" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
         <EntityType Name="tbl_inventory">
           <Key>
             <PropertyRef Name="id_barang" />
           </Key>
-          <Property Name="id_barang" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="id_barang" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_gudang" Type="Int32" Nullable="false" />
           <Property Name="nama_barang" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="jumlah" Type="Int32" Nullable="false" />
           <Property Name="create_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="create_user" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tbl_user">
+          <Key>
+            <PropertyRef Name="username" />
+          </Key>
+          <Property Name="username" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="password" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="gender" Type="String" Nullable="false" MaxLength="6" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="vw_index_gudang">
+          <Key>
+            <PropertyRef Name="id_gudang" />
+            <PropertyRef Name="nama_gudang" />
+            <PropertyRef Name="alamat" />
+            <PropertyRef Name="create_date" />
+          </Key>
+          <Property Name="id_gudang" Type="Int32" Nullable="false" />
+          <Property Name="nama_gudang" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="alamat" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="create_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="total_barang" Type="Int32" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -59,23 +123,47 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="db_gudangModelStoreContainer" CdmEntityContainer="db_gudangEntities">
-          <EntitySetMapping Name="tbl_user">
-            <EntityTypeMapping TypeName="db_gudangModel.tbl_user">
-              <MappingFragment StoreEntitySet="tbl_user">
-                <ScalarProperty Name="username" ColumnName="username" />
-                <ScalarProperty Name="password" ColumnName="password" />
-                <ScalarProperty Name="email" ColumnName="email" />
-                <ScalarProperty Name="gender" ColumnName="gender" />
+          <EntitySetMapping Name="tbl_gudang">
+            <EntityTypeMapping TypeName="db_gudangModel.tbl_gudang">
+              <MappingFragment StoreEntitySet="tbl_gudang">
+                <ScalarProperty Name="create_user" ColumnName="create_user" />
+                <ScalarProperty Name="create_date" ColumnName="create_date" />
+                <ScalarProperty Name="alamat" ColumnName="alamat" />
+                <ScalarProperty Name="nama_gudang" ColumnName="nama_gudang" />
+                <ScalarProperty Name="id_gudang" ColumnName="id_gudang" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tbl_inventory">
             <EntityTypeMapping TypeName="db_gudangModel.tbl_inventory">
               <MappingFragment StoreEntitySet="tbl_inventory">
+                <ScalarProperty Name="create_user" ColumnName="create_user" />
                 <ScalarProperty Name="create_date" ColumnName="create_date" />
                 <ScalarProperty Name="jumlah" ColumnName="jumlah" />
                 <ScalarProperty Name="nama_barang" ColumnName="nama_barang" />
+                <ScalarProperty Name="id_gudang" ColumnName="id_gudang" />
                 <ScalarProperty Name="id_barang" ColumnName="id_barang" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_user">
+            <EntityTypeMapping TypeName="db_gudangModel.tbl_user">
+              <MappingFragment StoreEntitySet="tbl_user">
+                <ScalarProperty Name="gender" ColumnName="gender" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="username" ColumnName="username" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vw_index_gudang">
+            <EntityTypeMapping TypeName="db_gudangModel.vw_index_gudang">
+              <MappingFragment StoreEntitySet="vw_index_gudang">
+                <ScalarProperty Name="total_barang" ColumnName="total_barang" />
+                <ScalarProperty Name="create_date" ColumnName="create_date" />
+                <ScalarProperty Name="alamat" ColumnName="alamat" />
+                <ScalarProperty Name="nama_gudang" ColumnName="nama_gudang" />
+                <ScalarProperty Name="id_gudang" ColumnName="id_gudang" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

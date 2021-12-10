@@ -12,12 +12,11 @@ namespace Inventory_API.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class tbl_inventory
+    public partial class tbl_gudang
     {
-        public int id_barang { get; set; }
         public int id_gudang { get; set; }
-        public string nama_barang { get; set; }
-        public int jumlah { get; set; }
+        public string nama_gudang { get; set; }
+        public string alamat { get; set; }
         public System.DateTime create_date { get; set; }
         public string create_user { get; set; }
     }

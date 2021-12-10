@@ -1,8 +1,7 @@
 
+
 namespace Crud_With_C.Models
 {
-    using System;
-    using System.Collections.Generic;
     
     public class tbl_user
     {

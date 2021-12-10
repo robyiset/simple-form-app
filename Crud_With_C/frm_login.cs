@@ -1,4 +1,5 @@
-﻿using Crud_With_C.Services;
+﻿using Crud_With_C.Models;
+using Crud_With_C.Services;
 using System;
 using System.Net.Http;
 using System.Windows.Forms;
@@ -47,6 +48,7 @@ namespace Crud_With_C
                 {
                     if (api.GetContent("user?username=" + txt_username.Text + "&password=" + txt_password.Text).ReadAsAsync<bool>().Result == true)
                     {
+                        session.username = txt_username.Text;
                         lb_validate.Text = string.Empty;
                         Hide();
                         frm_inventory_control_list frm = new frm_inventory_control_list();

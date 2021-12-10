@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
+using System;
 
 namespace Inventory_API.Controllers
 {
@@ -10,21 +11,21 @@ namespace Inventory_API.Controllers
         private db_gudangEntities db = new db_gudangEntities();
 
         [HttpGet]
-        public List<tbl_inventory> getAllInventory()
+        public List<tbl_inventory> getAllInventory(int id_gudang)
         {
-            return db.tbl_inventory.ToList();
+            return db.tbl_inventory.Where(x => x.id_gudang == id_gudang).OrderByDescending(x => x.create_date).ToList();
         }
 
         [HttpGet]
-        public tbl_inventory getInventory(string id)
+        public List<tbl_inventory> searchInventory(string search, int id_gudang)
         {
-            return db.tbl_inventory.Where(x => x.id_barang == id).FirstOrDefault();
+            return db.tbl_inventory.Where(x => x.id_gudang == id_gudang && x.nama_barang.ToLower().Contains(search.ToLower())).OrderByDescending(x => x.create_date).ToList();
         }
 
         [HttpGet]
-        public bool checkInventory(string id_check)
+        public bool checkInventory(int id_check, int id_gudang)
         {
-            var tbl = db.tbl_inventory.Where(i => i.id_barang == id_check).FirstOrDefault();
+            var tbl = db.tbl_inventory.Where(i => i.id_gudang == id_gudang && i.id_barang == id_check).FirstOrDefault();
             if (tbl != null)
             {
                 return true;
@@ -38,7 +39,14 @@ namespace Inventory_API.Controllers
         [HttpPost]
         public IHttpActionResult postInventory(tbl_inventory tbl)
         {
-            db.tbl_inventory.Add(tbl);
+            db.tbl_inventory.Add( new tbl_inventory 
+            {
+                nama_barang = tbl.nama_barang,
+                jumlah = tbl.jumlah,
+                create_user = tbl.create_user,
+                id_gudang = tbl.id_gudang,
+                create_date = DateTime.Now
+            });
             db.SaveChanges();
             db.Dispose();
             return Ok();
@@ -65,7 +73,7 @@ namespace Inventory_API.Controllers
         }
 
         [HttpDelete]
-        public IHttpActionResult deleteInventory(string id)
+        public IHttpActionResult deleteInventory(int id)
         {
             var db_tbl = db.tbl_inventory.Where(x => x.id_barang == id).FirstOrDefault();
             db.tbl_inventory.Remove(db_tbl);
