@@ -51,7 +51,7 @@ namespace Crud_With_C
                         session.username = txt_username.Text;
                         lb_validate.Text = string.Empty;
                         Hide();
-                        frm_inventory_control_list frm = new frm_inventory_control_list();
+                        frm_inventory_list frm = new frm_inventory_list();
                         frm.Show();
                     }
                     else

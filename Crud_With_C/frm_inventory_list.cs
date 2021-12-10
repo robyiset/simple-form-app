@@ -13,9 +13,9 @@ using System.Windows.Forms;
 
 namespace Crud_With_C
 {
-    public partial class frm_inventory_control_list : Form
+    public partial class frm_inventory_list : Form
     {
-        public frm_inventory_control_list()
+        public frm_inventory_list()
         {
             InitializeComponent();
         }
@@ -31,7 +31,7 @@ namespace Crud_With_C
                     session.nama_gudang = api.GetContent("gudang?id=" + lb_id_gudang.Text).ReadAsAsync<string>().Result;
 
                     Hide();
-                    frm_inventory_control_1 frm1 = new frm_inventory_control_1();
+                    frm_inventory_control frm1 = new frm_inventory_control();
                     frm1.Show();
                 }
                 catch (Exception ex)

@@ -7,9 +7,9 @@ using System.Windows.Forms;
 
 namespace Crud_With_C
 {
-    public partial class frm_inventory_control_1 : Form
+    public partial class frm_inventory_control : Form
     {
-        public frm_inventory_control_1()
+        public frm_inventory_control()
         {
             InitializeComponent();
         }
@@ -164,7 +164,7 @@ namespace Crud_With_C
         private void btn_back_Click(object sender, EventArgs e)
         {
             Hide();
-            frm_inventory_control_list frm4 = new frm_inventory_control_list();
+            frm_inventory_list frm4 = new frm_inventory_list();
             frm4.Show();
         }
 

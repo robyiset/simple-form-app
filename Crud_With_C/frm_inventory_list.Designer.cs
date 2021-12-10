@@ -1,7 +1,7 @@
 ﻿
 namespace Crud_With_C
 {
-    partial class frm_inventory_control_list
+    partial class frm_inventory_list
     {
         /// <summary>
         /// Required designer variable.
