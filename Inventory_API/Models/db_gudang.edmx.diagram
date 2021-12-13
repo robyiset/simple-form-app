@@ -8,7 +8,7 @@
         <EntityTypeShape EntityType="db_gudangModel.tbl_gudang" Width="1.5" PointX="0.75" PointY="0.75" />
         <EntityTypeShape EntityType="db_gudangModel.tbl_inventory" Width="1.5" PointX="2.75" PointY="0.75" />
         <EntityTypeShape EntityType="db_gudangModel.tbl_user" Width="1.5" PointX="4.875" PointY="0.875" />
-        <EntityTypeShape EntityType="db_gudangModel.vw_index_gudang" Width="1.5" PointX="7.875" PointY="0.875" />
+        <EntityTypeShape EntityType="db_gudangModel.vw_index_gudang" Width="1.5" PointX="6.875" PointY="0.875" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

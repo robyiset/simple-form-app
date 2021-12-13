@@ -2,13 +2,7 @@
 using Crud_With_C.Services;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
 using System.Net.Http;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Crud_With_C
@@ -47,6 +41,9 @@ namespace Crud_With_C
 
         private void btn_logout_Click(object sender, EventArgs e)
         {
+            session.username = string.Empty;
+            session.id_gudang = null;
+            session.nama_gudang = string.Empty;
             Hide();
             frm_login frm2 = new frm_login();
             frm2.Show();
@@ -82,7 +79,7 @@ namespace Crud_With_C
                 ConnectionAPI api = new ConnectionAPI();
                 if (api.GetContent("gudang?name_check=" + txt_nama_gudang.Text).ReadAsAsync<bool>().Result == true)
                 {
-                    if (MessageBox.Show("Confirm Delete?", "Delete Record", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    if (MessageBox.Show("Insert again?", "Data is already in table", MessageBoxButtons.YesNo) == DialogResult.Yes)
                     {
                         postgudang();
                     }

@@ -38,16 +38,17 @@ namespace Crud_With_C
                 ConnectionAPI api = new ConnectionAPI();
                 try
                 {
-                    tbl_inventory tbl = new tbl_inventory
+                    if (api.GetContent("inventory?nama_barang=" + txt_nama_barang.Text + "&jumlah=" + txt_jumlah.Text).ReadAsAsync<bool>().Result == true)
                     {
-                        nama_barang = txt_nama_barang.Text,
-                        jumlah = Convert.ToInt32(txt_jumlah.Text),
-                        create_user = session.username,
-                        id_gudang = Convert.ToInt32(session.id_gudang)
-                    };
-                    api.PostResponse("inventory", tbl);
-
-                    MessageBox.Show("Successfully Inserted!");
+                        if (MessageBox.Show("Insert again?", "Data is already in table", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                        {
+                            postinventory();
+                        }
+                    }
+                    else
+                    {
+                        postinventory();
+                    }
 
                 }
                 catch (Exception ex)
@@ -153,7 +154,7 @@ namespace Crud_With_C
                 }
 
                 lb_loading.Text = string.Empty;
-                dataGridView1.DataSource = new BindingSource(tbl, "");
+                dataGridBarang.DataSource = new BindingSource(tbl, "");
             }
             else
             {
@@ -182,7 +183,37 @@ namespace Crud_With_C
                 MessageBox.Show("Error message: " + ex.Message);
             }
             lb_loading.Text = string.Empty;
-            dataGridView1.DataSource = new BindingSource(lst_tbl, "");
+            dataGridBarang.DataSource = new BindingSource(lst_tbl, "");
+        }
+
+        private void postinventory()
+        {
+            ConnectionAPI api = new ConnectionAPI();
+            try
+            {
+                tbl_inventory tbl = new tbl_inventory
+                {
+                    nama_barang = txt_nama_barang.Text,
+                    jumlah = Convert.ToInt32(txt_jumlah.Text),
+                    create_user = session.username,
+                    id_gudang = Convert.ToInt32(session.id_gudang)
+                };
+                api.PostResponse("inventory", tbl);
+
+                MessageBox.Show("Successfully Inserted!");
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error message: " + ex.Message);
+            }
+        }
+
+        private void dataGridBarang_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            lb_id_barang.Text = dataGridBarang.CurrentRow.Cells[0].Value.ToString();
+            txt_nama_barang.Text = dataGridBarang.CurrentRow.Cells[2].Value.ToString();
+            txt_jumlah.Text = dataGridBarang.CurrentRow.Cells[3].Value.ToString();
         }
     }
 }

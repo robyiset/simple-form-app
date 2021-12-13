@@ -117,7 +117,7 @@ warning 6002: The table/view 'db_gudang.dbo.vw_index_gudang' does not have a pri
           <Property Name="create_date" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="total_barang" Type="Int32" />
         </EntityType>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>

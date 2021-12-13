@@ -50,26 +50,23 @@ namespace Crud_With_C
                         else
                         {
                             MessageBox.Show("Username already registered!");
-                            lb_registering.Text = string.Empty;
                         }
                     }
                     catch (Exception ex)
                     {
                         MessageBox.Show("Error message: " + ex.Message);
-                        lb_registering.Text = string.Empty;
                     }
                 }
                 else
                 {
                     MessageBox.Show("Password not match!");
-                    lb_registering.Text = string.Empty;
                 }
             }
             else
             {
                 MessageBox.Show("Please fill all textboxes!");
-                lb_registering.Text = string.Empty;
             }
+            lb_registering.Text = string.Empty;
         }
     }
 }

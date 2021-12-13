@@ -36,6 +36,20 @@ namespace Inventory_API.Controllers
             }
         }
 
+        [HttpGet]
+        public bool checkItem(string nama_barang, int jumlah)
+        {
+            var tbl = db.tbl_inventory.Where(i => i.nama_barang == nama_barang && i.jumlah == jumlah).FirstOrDefault();
+            if (tbl != null)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
         [HttpPost]
         public IHttpActionResult postInventory(tbl_inventory tbl)
         {

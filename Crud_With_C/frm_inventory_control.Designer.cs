@@ -35,7 +35,7 @@ namespace Crud_With_C
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.btn_insert = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dataGridBarang = new System.Windows.Forms.DataGridView();
             this.btn_update = new System.Windows.Forms.Button();
             this.btn_delete = new System.Windows.Forms.Button();
             this.btn_search = new System.Windows.Forms.Button();
@@ -44,7 +44,7 @@ namespace Crud_With_C
             this.txt_search = new System.Windows.Forms.TextBox();
             this.lb_id_barang = new System.Windows.Forms.Label();
             this.lb_loading = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridBarang)).BeginInit();
             this.SuspendLayout();
             // 
             // lb_title
@@ -110,16 +110,17 @@ namespace Crud_With_C
             this.btn_insert.UseVisualStyleBackColor = false;
             this.btn_insert.Click += new System.EventHandler(this.btn_insert_Click);
             // 
-            // dataGridView1
+            // dataGridBarang
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(33, 253);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 62;
-            this.dataGridView1.Size = new System.Drawing.Size(705, 248);
-            this.dataGridView1.TabIndex = 8;
+            this.dataGridBarang.AllowUserToAddRows = false;
+            this.dataGridBarang.AllowUserToDeleteRows = false;
+            this.dataGridBarang.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridBarang.Location = new System.Drawing.Point(33, 253);
+            this.dataGridBarang.Name = "dataGridBarang";
+            this.dataGridBarang.RowHeadersWidth = 62;
+            this.dataGridBarang.Size = new System.Drawing.Size(705, 248);
+            this.dataGridBarang.TabIndex = 8;
+            this.dataGridBarang.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridBarang_CellDoubleClick);
             // 
             // btn_update
             // 
@@ -207,7 +208,7 @@ namespace Crud_With_C
             this.lb_loading.Size = new System.Drawing.Size(0, 20);
             this.lb_loading.TabIndex = 49;
             // 
-            // frm_inventory_control_1
+            // frm_inventory_control
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -221,18 +222,18 @@ namespace Crud_With_C
             this.Controls.Add(this.btn_search);
             this.Controls.Add(this.btn_delete);
             this.Controls.Add(this.btn_update);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dataGridBarang);
             this.Controls.Add(this.btn_insert);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.txt_nama_barang);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.lb_title);
-            this.Name = "frm_inventory_control_1";
+            this.Name = "frm_inventory_control";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Inventory Control #1";
             this.Load += new System.EventHandler(this.frm_inventory_control_1_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridBarang)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -246,7 +247,7 @@ namespace Crud_With_C
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btn_insert;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dataGridBarang;
         private System.Windows.Forms.Button btn_update;
         private System.Windows.Forms.Button btn_delete;
         private System.Windows.Forms.Button btn_search;
